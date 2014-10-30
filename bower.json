@@ -1,0 +1,17 @@
+{
+  "name": "ELTrueSite",
+  "version": "0.0.0",
+  "authors": [
+    "staszekj <Stanislaw.Jagiella@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
