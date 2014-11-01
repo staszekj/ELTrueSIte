@@ -5,7 +5,8 @@
     <title></title>
 
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/bower_components/bootswatch/amelia/bootstrap.css">
+    <link rel="stylesheet" href="/main/main.css">
 
 
     <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -13,6 +14,59 @@
 
 </head>
 <body>
-OK
+
+<header class="container">
+    <div ng-controller="siteController" class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="btn navbar-toggle" data-toggle="collapse"
+                        data-target="#navMenu1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ELTrue</a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="navMenu1">
+                <ul class="nav navbar-nav">
+                    <li class="nav" ng-class="{active:isActive('/home')}"><a href="#home">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Poszukujemy<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">programisty</a></li>
+                            <li><a href="#">inwestora</a></li>
+                            <li><a href="#">współpracownika</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav" ng-class="{active:isActive('/about')}"><a href="#about">O firmie</a></li>
+                    <li class="nav" ng-class="{active:isActive('/contact')}"><a
+                            href="#contact">Kontakt</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">polski<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">polski</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+
 </body>
 </html>

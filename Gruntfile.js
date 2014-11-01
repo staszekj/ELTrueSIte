@@ -1,7 +1,16 @@
+
+'use strict';
+
 module.exports = function (grunt) {
 
     grunt.initConfig({
+
         pkg: grunt.file.readJSON('package.json'),
+
+        clean: {
+          build: './build'
+        },
+
         connect: {
             dev: {
                 options: {
@@ -37,19 +46,26 @@ module.exports = function (grunt) {
                     './src/{,*/}*.*',
                     './build/tmp/{,*/}*.*'
                 ]
+            },
+            less: {
+                files: ['./src/{,*/}*.less'],
+                tasks: ['less']
             }
         },
 
         less: {
-            options: {
-                paths: [
-                ]
-            },
-            files: {
-                '<%= appConfig.tmp %>/styles/components.css': '<%= appConfig.app %>/**/*.less',
-                '<%= appConfig.tmp %>/styles/layout.css': '<%= appConfig.resources %>/styles/layout.less',
-                '<%= appConfig.tmp %>/styles/main.css': '<%= appConfig.resources %>/styles/main.less'
+            main: {
+                options: {
+                    strictMath: true,
+                    sourceMap: true,
+                    outputSourceFiles: true,
+                    sourceMapURL: 'main.css.map',
+                    sourceMapFilename: './build/tmp/main/main.css.map'
+                },
+                src: './src/main/*.less',
+                dest: './build/tmp/main/main.css'
             }
+
         }
     });
 
@@ -60,6 +76,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['connect:dev','watch']);
+    grunt.registerTask('default', ['clean', 'less', 'connect:dev','watch']);
 
 };
