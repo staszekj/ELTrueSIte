@@ -10,9 +10,9 @@ module.exports = function (grunt) {
                     livereload: 35730,
                     middleware: function (connect) {
                         return [
-                            connect.static('./build/tmp'),
-                            connect.static('./src'),
-                            connect.static('./bower_components')
+                            connect().use('/', connect.static('./build/tmp')),
+                            connect().use('/', connect.static('./src')),
+                            connect().use('/bower_components', connect.static('./bower_components'))
                         ];
                     }
                 }
