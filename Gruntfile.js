@@ -1,6 +1,5 @@
 module.exports = function (grunt) {
 
-    // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         connect: {
@@ -8,13 +7,12 @@ module.exports = function (grunt) {
                 options: {
                     open: true,
                     port: 9000,
-                    hostname: 'localhost',
                     livereload: 35730,
                     middleware: function (connect) {
                         return [
-                            connect.static('./'),
                             connect.static('./build/tmp'),
-                            connect.static('./src')
+                            connect.static('./src'),
+                            connect.static('./bower_components')
                         ];
                     }
                 }
@@ -33,7 +31,7 @@ module.exports = function (grunt) {
         watch: {
             livereload: {
                 options: {
-                    livereload: 'true'
+                    livereload: '<%= connect.dev.options.livereload %>'
                 },
                 files: [
                     './src/{,*/}*.*',
@@ -62,6 +60,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['connect','watch']);
+    grunt.registerTask('default', ['connect:dev','watch']);
 
 };
